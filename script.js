@@ -1,5 +1,5 @@
 /*
-  Study Planner
+  StudyFlow
   -------------
   Tasks live in the `tasks` array. Every change is saved in
   localStorage so the list is still here after a refresh.
@@ -35,7 +35,7 @@ let activeFilter = "all";
 
 function init() {
   if (!taskForm || !taskList || !emptyState) {
-    console.error("Study Planner could not find the form or task list.");
+    console.error("StudyFlow could not find the form or task list.");
     return;
   }
 
