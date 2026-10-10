@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Planner</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">SP</div>
+          <div>
+            <h1>Study Planner</h1>
+            <p>Plan what to study next.</p>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Task filters">
+          <p class="nav-label">Show</p>
+          <div class="filter-group" role="group" aria-label="Filter tasks">
+            <button
+              type="button"
+              class="filter-button is-active"
+              data-filter="all"
+              data-label="All"
+              aria-pressed="true"
+            >
+              All (0)
+            </button>
+            <button
+              type="button"
+              class="filter-button"
+              data-filter="pending"
+              data-label="Pending"
+              aria-pressed="false"
+            >
+              Pending (0)
+            </button>
+            <button
+              type="button"
+              class="filter-button"
+              data-filter="completed"
+              data-label="Completed"
+              aria-pressed="false"
+            >
+              Completed (0)
+            </button>
+          </div>
+        </nav>
+
+        <p class="sidebar-note">
+          Tasks stay in this browser after you refresh the page.
+        </p>
+      </aside>
+
+      <main class="main">
+        <div class="content">
+          <noscript>
+            <p class="noscript">
+              This study planner needs JavaScript to save and display tasks.
+            </p>
+          </noscript>
+
+          <header class="page-header">
+            <h2>Dashboard</h2>
+            <p>Track assignments, due dates, and how much you have finished.</p>
+          </header>
+
+          <section class="stats" aria-label="Task statistics">
+            <article class="stat-card">
+              <h3 class="stat-label">Total</h3>
+              <p class="stat-value" id="stat-total">0</p>
+            </article>
+            <article class="stat-card stat-complete">
+              <h3 class="stat-label">Completed</h3>
+              <p class="stat-value" id="stat-completed">0</p>
+            </article>
+            <article class="stat-card stat-pending">
+              <h3 class="stat-label">Pending</h3>
+              <p class="stat-value" id="stat-pending">0</p>
+            </article>
+          </section>
+
+          <section class="panel" aria-labelledby="progress-heading">
+            <div class="progress-header">
+              <h3 id="progress-heading">Progress</h3>
+              <p id="progress-label">0% complete</p>
+            </div>
+            <div
+              class="progress-track"
+              id="progress-bar"
+              role="progressbar"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+              aria-valuetext="0% complete"
+            >
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="add-task-heading">
+            <h3 id="add-task-heading">Add a study task</h3>
+            <form id="task-form" novalidate>
+              <div class="form-grid">
+                <div class="form-field form-field-full">
+                  <label for="task-title">Task title</label>
+                  <input
+                    id="task-title"
+                    name="title"
+                    type="text"
+                    maxlength="120"
+                    placeholder="Review chapter 4"
+                    aria-describedby="title-hint form-error"
+                  >
+                  <p class="field-hint" id="title-hint">Required. Example: Review chapter 4.</p>
+                </div>
+
+                <div class="form-field">
+                  <label for="task-subject">Subject</label>
+                  <input
+                    id="task-subject"
+                    name="subject"
+                    type="text"
+                    maxlength="60"
+                    placeholder="Algebra"
+                  >
+                </div>
+
+                <div class="form-field">
+                  <label for="task-due-date">Due date</label>
+                  <input id="task-due-date" name="dueDate" type="date">
+                </div>
+
+                <div class="form-field">
+                  <label for="task-priority">Priority</label>
+                  <select id="task-priority" name="priority">
+                    <option value="Low">Low</option>
+                    <option value="Medium" selected>Medium</option>
+                    <option value="High">High</option>
+                  </select>
+                </div>
+
+                <div class="form-actions">
+                  <p id="form-error" class="form-error" role="alert" hidden></p>
+                  <button type="submit" class="button button-primary">Add task</button>
+                </div>
+              </div>
+            </form>
+          </section>
+
+          <section class="panel" aria-labelledby="task-list-heading">
+            <div class="list-header">
+              <h3 id="task-list-heading">Task list</h3>
+              <p id="list-summary">Showing every task.</p>
+            </div>
+            <ul id="task-list" class="task-list"></ul>
+            <div id="empty-state" class="empty-state">
+              <h3 id="empty-title">No study tasks yet</h3>
+              <p id="empty-message">
+                Add a title, subject, due date, and priority to get started.
+              </p>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
